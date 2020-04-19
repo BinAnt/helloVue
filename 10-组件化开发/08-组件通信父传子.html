@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>组件中的data函数</title>
+</head>
+    <div id="app">
+        <cpn :cmovies="movies" :cmessage="message"></cpn>
+    </div>
+<template id="cpn">
+        <div>
+           <p>{{cmovies}}</p> 
+        <h2>{{cmessage}}</h2>
+        </div>
+    </template>
+    <!-- /**
+     * 所以为什么组件中的data必需为函数
+     * 因为是函数每次调用才能返回独立的实例，多次调用数据不会相互影响
+     */ -->
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('cpn', {
+            template: '#cpn',
+            // props: ['cmovies', 'cmessage'],
+            // props: {
+            //     cmovies: Array,
+            //     cmessage: String
+            // },
+            props: {
+                cmovies: {
+                    type: Array,
+                    default: []
+                },
+                cmessage: {
+                    type: String,
+                    default: '我是默认值'
+                }
+            },
+            data() {
+                return {}
+            },
+            methods: {
+                increment() {
+                    this.counter++
+                },
+                decrement() {
+                    this.counter--
+                }
+            }
+        })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            movies: ['java', 'PHP', 'JAVASCRIPT'],
+            message: 'Hello world'
+        },
+        methods: {
+        }
+    })
+    </script>
+</body>
+</html>

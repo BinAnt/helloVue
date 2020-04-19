@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title></title>
+</head>
+
+<body>
+    <div id="app">
+    	<!--v-show的值为false的时候 v-show控制的元素是更改了display的属性值，变成display:none-->
+        <h2 v-show="isShow">我要不要显示呢</h2>
+        <button @click="isShow = !isShow">切换显示</button>
+        <!--v-if 的值为false的时候 控制范围内的元素是消失和出现的切换-->
+        <div v-if="isShow">
+        	<h2>v-if要不要我显示？</h2>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            isShow: false
+        },
+        methods: {}
+    })
+    </script>
+</body>
+
+</html>

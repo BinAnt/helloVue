@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>全局组件和局部组件</title>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+        <cpn></cpn>
+    </div>
+    <div id="app2">
+        <mycpn></mycpn>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    //1、创建组件构成器
+    const cpnC = Vue.extend({
+        template: `
+    		<div>
+    			<h2>这是组件的内容</h2>
+    		</div>
+    		`
+    })
+    //2、生成组件
+    // Vue.component('cpn', cpnC)
+
+    //全局组件就是在多个vue实例中都可以使用
+
+    //疑问：怎么才能生成局部组件呢？
+    //在vue实例内定义组件，那么组件就只在这个实例内可以使用
+    var app = new Vue({
+        el: '#app',
+        data: {},
+        methods: {},
+        components: {
+            //cpn 就是页面显示的标签名， cpnC就是组件构造器
+            cpn: cpnC
+        }
+    })
+
+    new Vue({
+        el: '#app2',
+        components: {
+            mycpn: cpnC
+        }
+    })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>购物车</title>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+	<div id="app" v-cloak>
+		<table border="1">
+			<thead>
+				<tr>
+					<td></td>
+					<td>书籍名称</td>
+					<td>出版日期</td>
+					<td>价格</td>
+					<td>购买数量</td>
+					<td>操作</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr v-for="(item, index) in books">
+					<td>{{item.id}}</td>
+					<td>{{item.date}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.price | showPrice}}</td>
+					<td>
+						<button @click="descrement(index)" v-bind:disabled="item.num <= 1">-</button>
+					{{item.num}}
+					<button @click="increment(index)">+</button>
+				</td>
+				<td>
+				<button @click="moveOut(index)">移出</button>
+				</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2>总价格:{{totalPrice | showPrice}}</h2>
+	</div>
+</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" >
+    <title>计算属性</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  
+      <div id="app-4">
+            <!--最原始的数据-拼接-->
+            <h1>{{firstName}} {{lastName}}</h1>
+            <!--通过methods 方法  调用了4次-->
+            <h1>{{getFullName()}}</h1>
+     <!--        <h1>{{getFullName()}}</h1>
+            <h1>{{getFullName()}}</h1>
+            <h1>{{getFullName()}}</h1> -->
+            <!--计算属性 始终只调用一次-->
+            <h1>{{fullName}}</h1>
+            <!-- <h1>{{fullName}}</h1>
+            <h1>{{fullName}}</h1>
+            <h1>{{fullName}}</h1>
+            <h1>{{fullName}}</h1> -->
+      </div>
+      <script>
+          var app = new Vue({
+            //   el: '#app',
+            el: '#app-4',
+              data: {
+                  firstName: 'Liu',
+                  lastName: 'Bin'
+              },
+              methods: {
+                getFullName: function () {
+                  console.log('getFullName')
+                  return this.firstName + ' ' + this.lastName
+                }
+              },
+              computed: {
+                //计算属性具有缓存作用，所以以后在实现对数据封装展示的功能的时候 尽量都用计算属性，性能要比methods高得多
+                fullName: function () {
+                  console.log('fullName')
+                  return this.firstName + ' ' + this.lastName
+                }
+              }
+          })
+      </script>
+</body>
+</html>

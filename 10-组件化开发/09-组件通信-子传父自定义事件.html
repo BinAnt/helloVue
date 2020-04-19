@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>子传父-自定义事件</title>
+</head>
+    <div id="app">
+        <cpn :cmovies="movies" :cmessage="message" @clickitem="clickCpn"></cpn>
+    </div>
+<template id="cpn">
+        <div>
+        	<button v-for="item in cmovies" @click="clickItem(item)">{{item}}</button>
+        </div>
+    </template>
+    <!-- /**
+     * 所以为什么组件中的data必需为函数
+     * 因为是函数每次调用才能返回独立的实例，多次调用数据不会相互影响
+     */ -->
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('cpn', {
+            template: '#cpn',
+            // props: ['cmovies', 'cmessage'],
+            // props: {
+            //     cmovies: Array,
+            //     cmessage: String
+            // },
+            props: {
+                cmovies: {
+                    type: Array,
+                    default: []
+                },
+                cmessage: {
+                    type: String,
+                    default: '我是默认值'
+                }
+            },
+            data() {
+                return {}
+            },
+            methods: {
+            	clickItem (item) {
+            		this.$emit('clickitem', item)
+            	},
+                increment() {
+                    this.counter++
+                },
+                decrement() {
+                    this.counter--
+                }
+            }
+        })
+    var app = new Vue({
+        el: '#app',
+        data: {
+            movies: ['JAVA', 'PHP', 'JAVASCRIPT'],
+            message: 'Hello world'
+        },
+        methods: {
+        	clickCpn (item) {
+        				let index = this.movies.indexOf(item);
+        				this.movies.splice(index, 0, item.toLowerCase())
+        			
+        		console.log('clickCpn', item);
+        	}
+        }
+    })
+    </script>
+</body>
+</html>

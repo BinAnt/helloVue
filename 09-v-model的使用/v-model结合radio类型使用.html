@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>v-model结合radio使用</title>
+    <style type="text/css">
+    	[v-cloak] {
+    		display: none;
+    	}
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+    	<div>
+    		<input type="radio" id="male" v-model="sex" value="男">
+    		<label for="male">男</label>
+    	</div>
+    	<div>
+    		<input type="radio" id="female" v-model="sex" value="女">
+    		<label for="female">女</label>
+    	</div>
+
+    	<h2>您选择的性别是：{{sex}}</h2>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+        	sex: '男'
+        },
+        methods: {}
+    })
+    </script>
+</body>
+
+</html>

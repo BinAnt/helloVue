@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Vue Demo1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+    	[v-cloak] {
+    		display: none;
+    	}
+    </style>
+</head>
+
+<body>
+    <div id="app-4" v-cloak>
+        <ol>
+            <li>
+              {{message}}
+            </li>
+        </ol>
+    </div>
+    <script>
+    	setTimeout(function() {
+    var app = new Vue({
+        //   el: '#app',
+        el: '#app-4',
+        data: {
+            message: 'hello',
+            todos: [
+                { text: '学习 JavaScript' },
+                { text: '学习 Vue' },
+                { text: '整个牛项目' }
+            ]
+        }
+    })
+
+    	},1000)
+    </script>
+</body>
+
+</html>    

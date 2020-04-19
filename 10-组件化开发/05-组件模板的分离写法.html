@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>模板分离</title>
+</head>
+
+<body>
+    <div id="app">
+    	<my-cpn></my-cpn>
+    	<my-cpn2></my-cpn2>
+    	<my-cpn2></my-cpn2>
+    	<my-cpn2></my-cpn2>
+    </div>
+    <script type="text/x-template" id="myCpn">
+    	<div>
+                    <h2>这是标题1</h2>
+                    <p>这是内容</p>
+                </div>
+    </script>
+    <template id="myCpn2">
+    	<div>
+                    <h2>{{title}}</h2>
+                    <p>这是内容</p>
+                </div>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    	Vue.component('my-cpn2', {
+    		template: '#myCpn2',
+    		data() {
+    			return {
+    				title: '这是标题2222'
+    			}
+    		}
+    	})
+    var app = new Vue({
+        el: '#app',
+        data: {
+        	title: '这是标题11111'
+        },
+        methods: {},
+        components: {
+        	'my-cpn': {
+        		template: '#myCpn'
+        	}
+        }
+    })
+    </script>
+</body>
+
+</html>

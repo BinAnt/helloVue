@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Vue Demo1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app-4">
+       <h2 :style="getStylees()">{{message}}</h2>
+    </div>
+    <script>
+    var app = new Vue({
+        //   el: '#app',
+        el: '#app-4',
+        data: {
+            message: 'hello',
+            fontSize: '50px',
+            color: 'red'
+        },
+        methods: {
+            clickBtn: function () {
+                this.isShow = !this.isShow
+            },
+            getClasses: function () {
+                return {'active': this.isShow, 'show': this.isActive};
+            },
+            getStylees: function () {
+                return {fontSize: '50px', color: 'red'}
+            },
+            clickLi: function (index) {
+                this.currentIndex = index
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

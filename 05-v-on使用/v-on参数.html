@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>v-on参数</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+      <!--1.不带参数的方法 在页面调用的时候带不带小括号都是一样的-->
+      <button @click="btn1click()">按钮1</button>
+      <button @click="btn1click">按钮1</button>
+      <!--带有参数 在方法中就可以直接使用-->
+      <button @click="btn2click('abd')">按钮2</button>
+      <!--方法定义里面有带参数，但在实际调用过程中没有小括号即没有传参，这个时候方法的默认参数是点击事件的信息-->
+      <button @click="btn2click">按钮2</button>
+      <!--定义方法要获取两个参数 其中一个是事件event，在调用的时候这样写 btn3click('hello', $event)-->
+      <button @click="btn3click('hello', $event)">按钮3</button>
+    </div>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            firstName: 'Liu',
+            lastName: 'Bin'
+        },
+        methods: {
+          btn1click () {
+            console.log('btn1click');
+          },
+          btn2click (a) {
+            console.log(a);
+          },
+          btn3click (a, event) {
+            console.log(a, event);
+          }
+        }
+    })
+    </script>
+</body>
+
+</html>

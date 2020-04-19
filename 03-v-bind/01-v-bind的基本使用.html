@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Vue Demo1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app-4">
+        <!--这里不能使用mustache语法-->
+        <img v-bind:src="url">
+        <a :href="hrefUrl">百度一下</a>
+    </div>
+    <script>
+    var app = new Vue({
+        //   el: '#app',
+        el: '#app-4',
+        data: {
+            message: 'hello',
+            url: 'https://pics4.baidu.com/feed/5ab5c9ea15ce36d3be072eb5ca345c81e850b106.jpeg?token=d40ecf9c8efb5276737b21a6a1fe32b8&s=ADD7ED045F3E38840139FC830100A091',
+            hrefUrl: 'https://www.baidu.com'
+        }
+    })
+    </script>
+</body>
+
+</html>

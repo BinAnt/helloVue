@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Vue Demo1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style type="text/css">
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app-4">
+        <!--这里不能使用mustache语法-->
+        <!-- <img v-bind:src="url"> -->
+        <a :href="hrefUrl">百度一下</a>
+        <h2 class="title" :class="{'active': isShow}">{{message}}</h2>
+        <h2 :class="{'active': isShow, 'show': isActive}">{{message}}</h2>
+        <h2 :class="getClasses()">{{message}}</h2>
+
+        <button @click="clickBtn">切换颜色</button>
+        <ul>
+            <li 
+            v-for="(item, index) in movies" 
+            :class="{active: index==currentIndex}" 
+            @click="clickLi(index)"
+            >{{item}}</li>
+        </ul>
+    </div>
+    <script>
+    var app = new Vue({
+        //   el: '#app',
+        el: '#app-4',
+        data: {
+            message: 'hello',
+            url: 'https://pics4.baidu.com/feed/5ab5c9ea15ce36d3be072eb5ca345c81e850b106.jpeg?token=d40ecf9c8efb5276737b21a6a1fe32b8&s=ADD7ED045F3E38840139FC830100A091',
+            hrefUrl: 'https://www.baidu.com',
+            isShow: true,
+            isActive: true,
+            movies: ['特效视频', '芒果TV', '爱奇艺', '韩剧TV'],
+            currentIndex: 0
+        },
+        methods: {
+            clickBtn: function () {
+                this.isShow = !this.isShow
+            },
+            getClasses: function () {
+                return {'active': this.isShow, 'show': this.isActive};
+            },
+            clickLi: function (index) {
+                this.currentIndex = index
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

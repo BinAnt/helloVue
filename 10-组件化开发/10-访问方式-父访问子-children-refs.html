@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>children</title>
+</head>
+
+<body>
+    <div id="app">
+        <npc></npc>
+        <npc></npc>
+        <npc ref="target"></npc>
+        <npc></npc>
+        <button @click="btnClick">按钮</button>
+    </div>
+    <template id="npc">
+        <h2>这是内容</h2>
+    </template>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+            btnClick () {
+                //1.通过 this.$children 得到父级下面的子组件数组
+                // console.log(this.$children);
+                // this.$children[0].getMassage()
+                // console.log(this.$children[0].age);
+                //2.通过this.$refs 是一个对象默认为{}， 当组件上有属性ref=“xxx”的时候就会返回子组件数组
+                
+                console.log(this.$refs);
+                console.log(this.$refs.target.age);
+                this.$refs.target.getMassage()
+            }
+        },
+        components: {
+            npc: {
+                template: '#npc',
+                props: {
+                    name: {
+                        type: String,
+                        value: 'Ant'
+                    }
+                },
+                data () {
+                    return {
+                        age: 30
+                    }
+                },
+                methods: {
+                    getMassage () {
+                        console.log('getMassage');
+                    }
+                }
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>

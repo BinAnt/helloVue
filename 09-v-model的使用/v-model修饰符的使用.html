@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>v-model修饰符</title>
+</head>
+
+<body>
+    <div id="app">
+    	<!--在“change”时而非“input”时更新-->
+    	<section>
+	    	<input type="text" name="" v-model.lazy="msg">
+	    	您输入的是： {{msg}}
+    	</section>
+    	<section>
+    		<!--将用户输入的输入值自动转为数值类型-->
+    		<input type="number" v-model.number.lazy="age">
+    		您的年龄是：{{age}}----{{typeof age}}
+    	</section>
+    	<section>
+    		<input type="text" name="" v-model.trim="name">
+	    	您输入的是： {{name}}
+    	</section>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+        	msg: '',
+        	age: '',
+        	name: ''
+        },
+        methods: {}
+    })
+    </script>
+</body>
+
+</html>

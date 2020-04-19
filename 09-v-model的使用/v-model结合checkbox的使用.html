@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>checkbox的使用</title>
+</head>
+
+<body>
+    <div id="app">
+    	<!--单选框时 chekbox的值是boolean值-->
+    	<!-- <label for="agree">
+    		<input type="checkbox" id="agree" name="agree" v-model="isAgree"> 同意协议
+    	</label>
+    	<h3>你选中是：{{isAgree}}</h3> -->
+
+    	<!--checkbox 多个为一组的时候  对应的值是数组-->
+    	<input type="checkbox" name="like" value="足球" v-model="likes"> 足球
+    	<input type="checkbox" name="like" value="排球" v-model="likes"> 排球
+    	<input type="checkbox" name="like" value="篮球" v-model="likes"> 篮球
+    	<input type="checkbox" name="like" value="乒乓球" v-model="likes"> 乒乓球
+
+    	<h3>您选择的是:{{likes}}</h3>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+        	isAgree: false,
+        	likes: []
+        },
+        methods: {}
+    })
+    </script>
+</body>
+
+</html>

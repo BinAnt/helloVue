@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>组件化的基本使用</title>
+</head>
+
+<body>
+    <div id="app">
+        <my-cpn></my-cpn>
+      
+        <div>
+        	<my-cpn></my-cpn>
+        </div>
+    </div>
+        <my-cpn></my-cpn>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    //1.创建组件构造器对象,template的内容最外出一定有一个根目录
+    const cpn = Vue.extend({
+        template: `
+        <div>
+ 			<h2>我是标题</h2>
+        	<p>我是内容：哈哈哈哈</p>
+        	<p>我是内容：呵呵呵he</p>
+        	</div>
+        `
+    })
+
+    // 2、注册组件
+    const myCpn = Vue.component('my-cpn', cpn)
+
+    var app = new Vue({
+        el: '#app'
+    })
+    </script>
+</body>
+
+</html>

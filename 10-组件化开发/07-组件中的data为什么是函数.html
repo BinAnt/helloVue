@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>组件中的data函数</title>
+</head>
+    <div id="app">
+    	<cpn></cpn>
+    	<cpn></cpn>
+    	<cpn></cpn>
+    </div>
+<template id="cpn">
+        <div>
+            <h2>当前计数为:{{counter}}</h2>
+            <button @click="increment">+</button>
+            <button @click="decrement">-</button>
+        </div>
+    </template>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    /**
+     * 所以为什么组件中的data必需为函数
+     * 因为是函数每次调用才能返回独立的实例，多次调用数据不会相互影响
+     */
+    <script>
+    	Vue.component('cpn', {
+    		template: '#cpn',
+    		data() {
+    			return {
+    				counter: 0
+    			}
+    		},
+    		methods: {
+    			increment() {
+    				this.counter++
+    			},
+    			decrement() {
+    				this.counter--
+    			}
+    		}
+    	})
+    var app = new Vue({
+        el: '#app',
+        data: {},
+        methods: {
+        }
+    })
+    </script>
+</body>
+</html>

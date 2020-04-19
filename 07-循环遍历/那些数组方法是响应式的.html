@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>哪些数组方法是响应式的</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="item in letters" :key="item">{{item}}</li>
+        </ul>
+        <button @click="btnClick">按鈕</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            letters: ['a', 'b', 'c', 'd']
+        },
+        methods: {
+            btnClick() {
+                //但是 也有情况是更改了数组但是不能响应式的更新数据
+                // this.letters[0] = 'fff'
+                // set(操作的数组, index, newValue)
+                // Vue.set(this.letters, 1, 'fff')
+               
+               //在数组尾部追加一个值
+               	// this.letters.push('e')
+               	// 删除数组的最后一个值
+               	// this.letters.pop();
+               	// 从数组的头部删除一个值
+               	// this.letters.shift()
+               	//从数组的头部插入一个值
+               	// this.letters.unshift('eee')
+               	
+
+               	//splice(start, num, ...item)
+               	//start 被操作数组的那个位置的index
+               	//num 要删除数据的长度， 如果不删除就写0, 如果从start后面全部删除就不写这个参数
+               	//...item 随机参数，可以任意多个，是往数组start位置开始插入的数据
+               	//根据参数的不同 slice能实现 元素替换/指定位置插入特定元素/删除元素
+               	this.letters.splice(1, 0, 'bb')
+            }
+        }
+    })
+    </script>
+</body>
+
+</html>
