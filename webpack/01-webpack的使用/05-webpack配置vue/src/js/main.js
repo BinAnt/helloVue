@@ -32,5 +32,5 @@ const app = new Vue({
     }
 })
 
-document.writeln('<button>这是按钮</button>')
+// document.writeln('<button>这是按钮</button>')
 
