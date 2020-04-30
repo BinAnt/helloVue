@@ -13,6 +13,13 @@ export default {
 
         }
   },
+  created() {
+    console.log('About created');
+  },
+  destroyed() {
+    console.log('About destroyed');
+    
+  },
   components: {
 
   }

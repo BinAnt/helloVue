@@ -11,14 +11,18 @@
 
 <script>
 export default {
-    name: "Home",
+  name: "Home",
   data() {
     return {
 
     }
   },
-  components: {
-
+  created() {
+    console.log('Home created');
+  },
+  destroyed() {
+    console.log('Home destroyed');
+    
   }
 }
 </script>

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-  <router-view></router-view>
+    <keep-alive exclude="About,User">
+      <router-view></router-view>
+    </keep-alive>
   <!-- <router-link to="/home" tag="button" replace active-class="active">首页</router-link>
   <router-link to="/about" tag="button" replace active-class="active">关于</router-link> -->
   <!-- <button @click="clickHome">首页</button>

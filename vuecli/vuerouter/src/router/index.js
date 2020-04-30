@@ -25,6 +25,9 @@ const routes = [
     {
         path: '/home',
         component: Home,
+        meta: {
+            title: '首页'
+        },
         children: [
             {
                 path: '',
@@ -42,15 +45,29 @@ const routes = [
     },
     {
         path: '/about',
-        component: About
+        component: About,
+        meta: {
+            title: '关于'
+        }
     },
     {
         path: '/user/:userId',
-        component: User
+        component: User,
+        meta: {
+            title: '用户'
+        }
     },
     {
         path: '/profile',
-        component: Profile
+        component: Profile,
+        meta: {
+            title: '档案'
+        },
+        //路由独享的守卫
+        beforeEnter: (to, from, next) => {
+            console.log('beforeEnter');
+            next()
+        }
     }
 ];
 
@@ -59,6 +76,15 @@ const router = new vueRouter({
     routes,
     mode: 'history'
 })
-
+//前置守卫(guard) 全局导航守卫
+router.beforeEach((to, from, next) => {
+    document.title = to.matched[0].meta.title;
+    next()
+})
+//后置钩子(hook)
+// router.afterEach((to, from) => {
+//     // console.log(to, from);
+    
+// })
 //3、将router对象传入到Vue实例
 export default router
