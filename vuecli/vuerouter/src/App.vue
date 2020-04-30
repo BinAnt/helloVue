@@ -8,9 +8,11 @@
 
   <router-link to="/home">首页</router-link>
   <router-link to="/about">关于</router-link>
-  <router-link :to="'/user/'+userId">用户</router-link>
+  <!-- <router-link :to="'/user/'+userId">用户</router-link> -->
   <!-- <router-link to="/profile">档案</router-link> -->
-  <router-link :to="{path: '/profile', query: {name: 'ant', age: '18', height: '170'}}">档案</router-link>
+  <!-- <router-link :to="{path: '/profile', query: {name: 'ant', age: '18', height: '170'}}">档案</router-link> -->
+  <button @click="userClick">用户</button>
+  <button @click="profileClickc">档案</button>
   </div>
 </template>
 
@@ -30,6 +32,19 @@ export default {
     clickAbout() {
       // this.$router.push('/about')
       this.$router.replace('/about')
+    },
+    userClick() {
+      this.$router.push('/user/'+ this.userId)
+    },
+    profileClickc() {
+      this.$router.push({
+        path: '/profile',
+        query: {
+          name: 'ant',
+          height: 177,
+          age: 17
+        }
+      })
     }
   }
 }
