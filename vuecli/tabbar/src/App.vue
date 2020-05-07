@@ -1,23 +1,28 @@
 <template>
 <div id="app">
   <TarBar>
-    <TarBarItem v-for="tabbar in tabBars" :key="tabbar">
-       <img slot="tabbar-img" class="tabbar-img" :src="tabbar.img" alt="">
-      <div slot="tabbar-text" class="tabbar-text">{{tabbar.title}}</div> 
-    </TarBarItem>
-    <!-- <TarBarItem>
+    <TarBarItem path="/home">
       <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/home.png" alt="">
+      <img slot="tabbar-img-active" class="tabbar-img" src="./assets/img/tabbar/home_active.png" alt="">
       <div slot="tabbar-text" class="tabbar-text">首页</div> 
     </TarBarItem>
-    <TarBarItem>
-      <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/home.png" alt="">
-      <div slot="tabbar-text" class="tabbar-text">首页</div> 
+    <TarBarItem path="/category">
+      <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/cat.png" alt="">
+      <img slot="tabbar-img-active" class="tabbar-img" src="./assets/img/tabbar/cat_active.png" alt="">
+      <div slot="tabbar-text" class="tabbar-text">分类</div> 
     </TarBarItem>
-    <TarBarItem>
-      <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/home.png" alt="">
-      <div slot="tabbar-text" class="tabbar-text">首页</div> 
-    </TarBarItem> -->
+    <TarBarItem path="/cart">
+      <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/cart.png" alt="">
+      <img slot="tabbar-img-active" class="tabbar-img" src="./assets/img/tabbar/cart_active.png" alt="">
+      <div slot="tabbar-text" class="tabbar-text">购物车</div> 
+    </TarBarItem>
+    <TarBarItem path="/profile">
+      <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/my.png" alt="">
+      <img slot="tabbar-img-active" class="tabbar-img" src="./assets/img/tabbar/my_active.png" alt="">
+      <div slot="tabbar-text" class="tabbar-text">我的</div> 
+    </TarBarItem>
   </TarBar>
+  <router-view></router-view>
 </div>
 </template>
 

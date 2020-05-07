@@ -1,15 +1,35 @@
 <template>
-    <div class="tab-bar-item">
-        <slot name="tabbar-img"></slot>
-        <slot name="tabbar-text"></slot>
-      <!-- <img class="tabbar-img" src="../../assets/img/tabbar/home.png" alt="">
-      <div class="tabbar-text">首页</div>  -->
+    <div class="tab-bar-item" @click="clickItem">
+        <div v-if="!isActive">
+          <slot name="tabbar-img"></slot>
+        </div>
+        <div v-else>
+          <slot name="tabbar-img-active" ></slot>
+        </div>
+        <div :class="{active: isActive}">
+          <slot name="tabbar-text"></slot>
+        </div>
+        
     </div>
 </template>
 
 <script>
 export default {
-    name: 'TabBarItem'
+    name: 'TabBarItem',
+    props: {
+      path: String
+    },
+    data() {
+      return {
+        isActive: true
+      }
+    },
+    methods: {
+      clickItem() {
+        console.log('clickItem')
+        this.$router.replace(this.path)
+      }
+    }
   }
 </script>
 
@@ -27,5 +47,10 @@ export default {
 }
 .tabbar-text {
   font-size: 12px;
+  height: 15px;
+  line-height: 15px;
+}
+.active {
+  color: #fff;
 }
 </style>
