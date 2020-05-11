@@ -6,7 +6,8 @@
         <div v-else>
           <slot name="tabbar-img-active" ></slot>
         </div>
-        <div :class="{active: isActive}">
+        <!-- <div :class="{active: isActive}"> -->
+        <div :style="styleColor">
           <slot name="tabbar-text"></slot>
         </div>
         
@@ -17,16 +18,27 @@
 export default {
     name: 'TabBarItem',
     props: {
-      path: String
+      path: String,
+      activeColor: {
+        type: String,
+        default: '#fff'
+      }
     },
     data() {
       return {
-        isActive: true
+        // isActive: true
+      }
+    },
+    computed: {
+      isActive() {
+        return this.$route.path.indexOf(this.path) !== -1
+      },
+      styleColor() {
+        return this.isActive ? {color:this.activeColor} : {}
       }
     },
     methods: {
       clickItem() {
-        console.log('clickItem')
         this.$router.replace(this.path)
       }
     }
@@ -40,6 +52,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: blueviolet;
 }
 .tabbar-img {
   width: 32px;

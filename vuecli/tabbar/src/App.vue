@@ -1,17 +1,17 @@
 <template>
 <div id="app">
   <TarBar>
-    <TarBarItem path="/home">
+    <TarBarItem path="/home" activeColor="pink">
       <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/home.png" alt="">
       <img slot="tabbar-img-active" class="tabbar-img" src="./assets/img/tabbar/home_active.png" alt="">
       <div slot="tabbar-text" class="tabbar-text">首页</div> 
     </TarBarItem>
-    <TarBarItem path="/category">
+    <TarBarItem path="/category" activeColor="pink">
       <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/cat.png" alt="">
       <img slot="tabbar-img-active" class="tabbar-img" src="./assets/img/tabbar/cat_active.png" alt="">
       <div slot="tabbar-text" class="tabbar-text">分类</div> 
     </TarBarItem>
-    <TarBarItem path="/cart">
+    <TarBarItem path="/cart" activeColor="pink">
       <img slot="tabbar-img" class="tabbar-img" src="./assets/img/tabbar/cart.png" alt="">
       <img slot="tabbar-img-active" class="tabbar-img" src="./assets/img/tabbar/cart_active.png" alt="">
       <div slot="tabbar-text" class="tabbar-text">购物车</div> 
