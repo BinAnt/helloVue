@@ -1,6 +1,9 @@
 <template>
   <div class="hello">
-   
+    <h2>---------Hello 内容---------</h2>
+   <h2>{{$store.state.counter}}</h2>
+   <h2>---------Hello getters---------</h2>
+   <p>{{$store.getters.powerCounter}}</p>
   </div>
 </template>
 

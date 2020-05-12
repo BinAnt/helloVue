@@ -1,15 +1,35 @@
 <template>
   <div id="app">
-  <div>{{counter}}</div>
+    <h2>-----------APP内容------------</h2>
+  <div>计数器：{{$store.state.counter}}</div>
+  <div>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>
+  <h2>--------APP getters-------</h2>
+  <p>{{$store.getters.powerCounter}}</p>
+  <HelloWorld/>
   </div>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld'
 export default {
   name: 'App',
+  components: {
+    HelloWorld
+  },
   data() {
     return {
       counter: 0
+    }
+  },
+  methods: {
+    increment() {
+      this.$store.commit('increment')
+    },
+    decrement() {
+      this.$store.commit('decrement')
     }
   }
 }
