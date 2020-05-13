@@ -1,10 +1,12 @@
 <template>
   <div id="app">
     <h2>-----------APP内容------------</h2>
+    <h2>{{$store.state.info}}</h2>
   <div>计数器：{{$store.state.counter}}</div>
   <div>
     <button @click="increment">+</button>
     <button @click="decrement">-</button>
+    <button @click="updateInfo">修改信息</button>
   </div>
   <h2>--------APP getters-------</h2>
   <p>{{$store.getters.powerCounter}}</p>
@@ -14,6 +16,8 @@
 
 <script>
 import HelloWorld from './components/HelloWorld'
+import { INCREMENT } from './store/mutation-types'
+
 export default {
   name: 'App',
   components: {
@@ -26,10 +30,27 @@ export default {
   },
   methods: {
     increment() {
-      this.$store.commit('increment')
+      this.$store.dispatch(INCREMENT)
+      // this.$store.commit(INCREMENT)
     },
     decrement() {
       this.$store.commit('decrement')
+    },
+    updateInfo() {
+      // this.$store.commit('updateInfo')
+      // this.$store.dispatch('aUpdateInfo', {
+      //   'name': 'Ant',
+      //   success: () => {
+      //     console.log('里面已经执行完成');
+          
+      //   }
+      // })
+
+      this.$store
+      .dispatch('aUpdateInfo', {'name': 'Ant'})
+      .then(res => {
+        console.log(res);
+      })
     }
   }
 }
