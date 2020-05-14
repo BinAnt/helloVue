@@ -39,15 +39,32 @@ import qs from 'qs'
 //   console.log(results);
 // })
 
-Axios.all([Axios({
-  url: 'http://api.qualife.com/out-site/data',
+// Axios.defaults.baseURL = 'http://api.qualife.com/out-site'
+// Axios.defaults.timeout = 500
+
+// Axios.all([Axios({
+//   url: '/data',
+//   method: 'post',
+//   params: {
+//     name:'Bin',
+//     firstName:'Ant'
+//   }
+// }), Axios({
+//   url: '/get-banner'
+// })]).then(Axios.spread((res1, res2) => {
+//   console.log(res1, res2);
+// }))
+
+import {request} from './network/request'
+
+request({
+  url: '/out-site/data',
   params: {
     name:'Bin',
     firstName:'Ant'
   }
-}), Axios({
-  url: 'http://api.qualife.com/out-site/get-banner'
-})]).then(Axios.spread((res1, res2) => {
-  console.log(res1, res2);
-  
-}))
+}).then(res => {
+  console.log(res);
+}).catch(err => {
+  console.log(err);
+})
